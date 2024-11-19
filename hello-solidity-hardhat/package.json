@@ -1,0 +1,20 @@
+{
+  "name": "hello-solidity-hardhat",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx hardhat test",
+    "deploy": "npx hardhat ignition deploy ignition/modules/HelloWorld.ts --network sepolia"
+  },
+  "keywords": [],
+  "author": "LuizTools",
+  "license": "MIT",
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^5.0.0",
+    "hardhat": "^2.22.2"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5"
+  }
+}

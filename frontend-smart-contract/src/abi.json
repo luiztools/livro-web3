@@ -1,0 +1,115 @@
+[
+    {
+        "inputs": [
+            {
+                "internalType": "string",
+                "name": "_title",
+                "type": "string"
+            },
+            {
+                "internalType": "string",
+                "name": "_author",
+                "type": "string"
+            },
+            {
+                "internalType": "string",
+                "name": "_isbn",
+                "type": "string"
+            },
+            {
+                "internalType": "uint16",
+                "name": "_pages",
+                "type": "uint16"
+            },
+            {
+                "internalType": "uint16",
+                "name": "_year",
+                "type": "uint16"
+            }
+        ],
+        "name": "addBook",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "name": "books",
+        "outputs": [
+            {
+                "internalType": "string",
+                "name": "title",
+                "type": "string"
+            },
+            {
+                "internalType": "string",
+                "name": "author",
+                "type": "string"
+            },
+            {
+                "internalType": "string",
+                "name": "isbn",
+                "type": "string"
+            },
+            {
+                "internalType": "uint16",
+                "name": "pages",
+                "type": "uint16"
+            },
+            {
+                "internalType": "uint16",
+                "name": "year",
+                "type": "uint16"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "index",
+                "type": "uint256"
+            }
+        ],
+        "name": "deleteBook",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "index",
+                "type": "uint256"
+            },
+            {
+                "internalType": "string",
+                "name": "_author",
+                "type": "string"
+            },
+            {
+                "internalType": "uint16",
+                "name": "_pages",
+                "type": "uint16"
+            },
+            {
+                "internalType": "uint16",
+                "name": "_year",
+                "type": "uint16"
+            }
+        ],
+        "name": "updateBook",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    }
+]
