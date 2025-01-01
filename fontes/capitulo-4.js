@@ -118,7 +118,6 @@ const CONTRACT_ADDRESS = "0x8dd78c50505f86d29b48a27e0396ef4f65c36057";
 
 //4.16
 function App() {
-
     const [bookIndex, setBookIndex] = useState("0");
     const [message, setMessage] = useState("");
 
@@ -211,4 +210,4 @@ async function btnSaveClick(){
     setMessage("Sending a new book to BookDatabase...wait...");
     await tx.wait();
     setMessage("Tx: " + tx.hash);
-  }
+}
