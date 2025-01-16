@@ -2,15 +2,18 @@
 node - v
 
 //4.2
-npx create - react - app frontend - blockchain
+npm install -g yarn
 
 //4.3
-cd frontend - blockchain
+yarn create react-app frontend-blockchain
 
 //4.4
-npm start
+cd frontend-blockchain
 
 //4.5
+npm start
+
+//4.6
 import './App.css';
 
 function App() {
@@ -23,19 +26,19 @@ function App() {
 
 export default App;
 
-//4.6
+//4.7
 npm install ethers
 
-//4.7
+//4.8
 import { useState } from 'react';
 import { ethers } from 'ethers';
 
-//4.8
+//4.9
 const [myWallet, setMyWallet] = useState("");
 const [balance, setBalance] = useState('');
 const [message, setMessage] = useState('');
 
-//4.9
+//4.10
 return (
     <div>
         <p>
@@ -52,7 +55,7 @@ return (
     </div >
 );
 
-//4.10
+//4.11
 async function btnConnectClick() {
     if (!window.ethereum)
         return setMessage('No MetaMask');
@@ -60,7 +63,7 @@ async function btnConnectClick() {
     setMessage(`Trying to connect and load balance...`);
 }
 
-//4.11
+//4.12
 async function btnConnectClick() {
     if (!window.ethereum)
         return setMessage("No MetaMask");
@@ -77,11 +80,11 @@ async function btnConnectClick() {
     setMessage(``);
 }
 
-//4.12
+//4.13
 const [toAddress, setToAddress] = useState("");
 const [quantity, setQuantity] = useState("");
 
-//4.13
+//4.14
 <p>
   To Address: <input type="text" onChange={evt => setToAddress(evt.target.value)} />
 </p>
@@ -93,7 +96,7 @@ const [quantity, setQuantity] = useState("");
 </p>
 <hr />
 
-//4.14
+//4.15
 async function btnTransferClick() {
     setMessage(`Trying to transfer ETH ${quantity} to ${toAddress}...`);
 
@@ -109,14 +112,14 @@ async function btnTransferClick() {
     setMessage("Tx Hash: " + tx.hash);
 }
 
-//4.15
+//4.16
 import { useState } from 'react';
 import { ethers } from 'ethers';
 import ABI from './abi.json';
 
 const CONTRACT_ADDRESS = "0x8dd78c50505f86d29b48a27e0396ef4f65c36057";
 
-//4.16
+//4.17
 function App() {
     const [bookIndex, setBookIndex] = useState("0");
     const [message, setMessage] = useState("");
@@ -142,7 +145,7 @@ function App() {
     );
 }
 
-//4.17
+//4.18
 async function btnSearchClick() {
     if (!window.ethereum) return setMessage("No MetaMask found!");
 
@@ -154,7 +157,7 @@ async function btnSearchClick() {
     alert(bookIndex);
 }
 
-//4.18
+//4.19
 try {
     const contract = new ethers.Contract(CONTRACT_ADDRESS, ABI, provider);
     const book = await contract.books(bookIndex);
@@ -167,14 +170,14 @@ try {
     setMessage(err.message);
 }
 
-//4.19
+//4.20
 const [newBook, setNewBook] = useState({});
 
 function onBookChange(evt) {
   setNewBook(prevState => ({ ...prevState, [evt.target.id]: evt.target.value }));
 }
 
-//4.20
+//4.21
 <hr />
 <p>
   <label>Title: <input type="text" id="title" value={newBook.title} onChange={onBookChange} /></label>
@@ -195,12 +198,12 @@ function onBookChange(evt) {
   <input type="button" value="Save" onClick={btnSaveClick} />
 </p>
 
-//4.21
+//4.22
 async function btnSaveClick(){
     alert(JSON.stringify(newBook));
 }
 
-//4.22
+//4.23
 async function btnSaveClick(){
     setMessage("Accept the transaction at MetaMask...");
     const provider = new ethers.BrowserProvider(window.ethereum);
