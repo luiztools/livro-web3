@@ -10,7 +10,7 @@ contract LiquidityToken is ILPToken, ERC20, Ownable {
 
     address public liquidityMining;
 
-    constructor() ERC20("LiquidityToken", "LPT") Ownable() {
+    constructor() ERC20("LiquidityToken", "LPT") Ownable(msg.sender) {
         
     }
 

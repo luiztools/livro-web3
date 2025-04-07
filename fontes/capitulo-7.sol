@@ -63,7 +63,7 @@ contract LiquidityToken is ILPToken, ERC20, Ownable {
 //7.7
 address public liquidityMining;
 
-constructor() ERC20("LiquidityToken", "LPT") Ownable() {
+constructor() ERC20("LiquidityToken", "LPT") Ownable(msg.sender) {
   
 }
 
@@ -154,7 +154,7 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 contract LiquidityMining is Ownable {
 
 //7.19
-constructor(address tokenAddress, address rewardAddress) Ownable() {
+constructor(address tokenAddress, address rewardAddress) Ownable(msg.sender) {
     token = IERC20(tokenAddress);
     reward = ILPToken(rewardAddress);
 }

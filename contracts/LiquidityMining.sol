@@ -15,7 +15,7 @@ contract LiquidityMining is Ownable {
     uint public rewardFactor = 100;//base 10.000 = 100%
     uint public periodFactor = 30 * 24 * 60 * 60;//1 mês em segundos
 
-    constructor(address tokenAddress, address rewardAddress) Ownable() {
+    constructor(address tokenAddress, address rewardAddress) Ownable(msg.sender) {
         token = IERC20(tokenAddress);
         reward = ILPToken(rewardAddress);
     }

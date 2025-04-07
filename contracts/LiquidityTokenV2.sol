@@ -11,7 +11,7 @@ contract LiquidityToken is ILPToken, ERC20, ERC20Burnable, Ownable {
 
     address public liquidityMining;
 
-    constructor() ERC20("LiquidityToken", "LPT") Ownable() { }
+    constructor() ERC20("LiquidityToken", "LPT") Ownable(msg.sender) { }
 
     function setLiquidityMining(address contractAddress) public onlyOwner {
         liquidityMining = contractAddress;
