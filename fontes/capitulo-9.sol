@@ -3,11 +3,11 @@ npm init -y
 npm install -D hardhat
 
 //9.2
-npx hardhat init
+npx hardhat --init
 
 //9.3
 // SPDX-License-Identifier: MIT
-pragma solidity 0.8.26;
+pragma solidity 0.8.28;
 
 contract HelloWorld {
    string public message = "Hello World!";
@@ -18,9 +18,10 @@ contract HelloWorld {
 }
 
 //9.4
-import { loadFixture } from "@nomicfoundation/hardhat-network-helpers";
 import { expect } from "chai";
-import { ethers } from "hardhat";
+import { network } from "hardhat";
+
+const { ethers } = await network.connect();
 
 //9.5
 describe("HelloWorld", () => {
@@ -28,30 +29,23 @@ describe("HelloWorld", () => {
 });
 
 //9.6
-async function deployFixture() {
-  const [owner, otherAccount] = await ethers.getSigners();
-  const HelloWorld = await ethers.getContractFactory("HelloWorld");
-  const helloWorld = await HelloWorld.deploy();
-  return { helloWorld, owner, otherAccount };
-}
-
-//9.7
 it("Should Hello the world", async () => {
-  const { helloWorld } = await loadFixture(deployFixture);
+  const helloWorld = await ethers.deployContract("HelloWorld");
   expect(await helloWorld.helloWorld()).equal("Hello World!");
 });
 
-//9.8
-npx hardhat test
+//9.7
+npx hardhat test mocha
 
-//9.9
+//9.8
 npm install dotenv
 
-//9.10
-SECRET=suas 12 palavras aqui separadas por espaços
-RPC_URL=sua URL da Infura aqui
+//9.9
+PRIVATE_KEY=sua chave privada
+RPC_NODE=sua URL da Infura aqui
+CHAIN_ID=11155111
 
-//9.11
+//9.10
 import { buildModule } from "@nomicfoundation/hardhat-ignition/modules";
 
 const HelloWorldModule = buildModule("HelloWorldModule", (m) => {
@@ -61,55 +55,50 @@ const HelloWorldModule = buildModule("HelloWorldModule", (m) => {
 
 export default HelloWorldModule;
 
-//9.12
-import { HardhatUserConfig } from "hardhat/config";
-import "@nomicfoundation/hardhat-toolbox";
-
-import dotenv from 'dotenv';
-dotenv.config();
-
-const config: HardhatUserConfig = {
-  solidity: "0.8.26",
+//9.11
+import "dotenv/config";
+//…
   networks: {
     sepolia: {
-      url: process.env.RPC_NODE,
-      chainId: 11155111,
-      accounts: {
-        mnemonic: process.env.SECRET
-      }
+      type: "http",
+      chainType: "l1",
+      chainId: Number(process.env.CHAIN_ID),
+      url: configVariable("RPC_NODE"),
+      accounts: [configVariable("PRIVATE_KEY")],
     }
   }
-};
+});
 
-export default config;
-
-//9.13
+//9.12
 npx hardhat ignition deploy ignition/modules/HelloWorld.ts --network sepolia
 
-//9.14
+//9.13
 API_KEY=sua API Key da EtherScan
 
+//9.14
+  verify: {
+    etherscan: {
+      apiKey: process.env.API_KEY
+    }
+  }
+});
+
 //9.15
-etherscan: {
-  apiKey: process.env.API_KEY
-}
+npx hardhat verify etherscan --network sepolia <contrato>
 
 //9.16
-npx hardhat verify --network sepolia <contrato>
-
-//9.17
 //SPDX-License-Identifier: MIT
-pragma solidity ^0.8.22;
+pragma solidity ^0.8.28;
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 
 contract MyToken is ERC20 {
    constructor() ERC20("MyToken", "MTK") {}
 }
 
-//9.18
+//9.17
 npm install -D @openzeppelin/contracts
 
-//9.19
+//9.18
 struct Book {
    uint id;
    string title;
@@ -130,7 +119,7 @@ contract MyContract {
    }
 }
 
-//9.20
+//9.19
 contract MyContract {
     Book[] books;
     mapping(uint => uint) bookIndex;//id to index
@@ -141,7 +130,7 @@ contract MyContract {
     }
 }
 
-//9.21
+//9.20
 library JKPLibrary {
     struct Player {
         address wallet;
@@ -149,7 +138,7 @@ library JKPLibrary {
     }
 }
 
-//9.22
+//9.21
 import "./JKPLibrary.sol";
 
 contract JoKenPo {
@@ -157,7 +146,7 @@ contract JoKenPo {
 
     //...
 
-//9.23
+//9.22
 const MetaCoin = await ethers.getContractFactory("MetaCoin", {
   libraries: {
     SafeMath: "0x...",
@@ -165,23 +154,30 @@ const MetaCoin = await ethers.getContractFactory("MetaCoin", {
 });
 const metaCoin = await MetaCoin.deploy();
 
-//9.24
+//9.23
 solidity: {
-  version: "0.8.26",
-  settings: {
-    optimizer: {
-      enabled: true,
-      runs: 200
-    }
-  }
+  profiles: {
+    default: {
+      version: "0.8.28",
+    },
+    production: {
+      version: "0.8.28",
+      settings: {
+        optimizer: {
+          enabled: true,
+          runs: 200,
+        },
+      },
+    },
+  },
 },
 
-//9.25
+//9.24
 uint128 x = 0;
 uint256 y = 1;
 uint128 z = 2;
 
-//9.26
+//9.25
 uint128 x = 0;
 uint128 z = 2;
 uint256 y = 1;

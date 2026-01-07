@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: MIT
 
-pragma solidity ^0.8.26;
+pragma solidity ^0.8.28;
 
 contract Carteira {
     mapping(address => uint256) public balances; //user => balance

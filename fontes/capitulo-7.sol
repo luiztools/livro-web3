@@ -1,5 +1,5 @@
 //7.1
-pragma solidity ^0.8.26;
+pragma solidity ^0.8.28;
 
 contract Carteira {
     mapping(address => uint256) public balances; //user => balance
@@ -41,7 +41,7 @@ function withdraw(uint amount) external {
 
 //7.5
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.26;
+pragma solidity ^0.8.28;
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
 interface ILPToken is IERC20 {
@@ -50,7 +50,7 @@ interface ILPToken is IERC20 {
 
 //7.6
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.26;
+pragma solidity ^0.8.28;
 
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
@@ -80,7 +80,7 @@ function mint(address receiver, uint amount) external{
 
 //7.10
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.26;
+pragma solidity ^0.8.28;
 
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "./ILPToken.sol";

@@ -1,7 +1,7 @@
 //5.1
 //SPDX-License-Identifier: MIT
 
-pragma solidity ^0.8.26;
+pragma solidity ^0.8.28;
 
 contract LuizCoin {
    
@@ -88,7 +88,7 @@ function transferFrom(address from, address to, uint256 value) public returns (b
 //5.13
 //SPDX-License-Identifier: MIT
 
-pragma solidity 0.8.26;
+pragma solidity 0.8.28;
 
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
